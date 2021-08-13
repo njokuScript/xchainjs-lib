@@ -255,6 +255,19 @@ class Client implements ThorchainClient, XChainClient {
   }
 
   /**
+   * Get private key.
+   *
+   * @returns {string} The private key generated from the given phrase
+   *
+   * @throws {"Phrase not set"}
+   * Throws an error if phrase has not been set before
+   * */
+  getPrivateKeyString(index = 0): string {
+    const privKey = this.cosmosClient.getPrivKeyFromMnemonic(this.phrase, this.getFullDerivationPath(index))
+    return privKey.toBuffer().toString('hex')
+  }
+
+  /**
    * Get the current address.
    *
    * @returns {Address} The current address.
