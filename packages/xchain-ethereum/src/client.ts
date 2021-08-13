@@ -141,6 +141,20 @@ export default class Client extends BaseXChainClient implements XChainClient, Et
   }
 
   /**
+   * Get private key.
+   *
+   * @returns {string} The private key generated from the given phrase
+   *
+   * @throws {"Phrase not set"}
+   * Throws an error if phrase has not been set before
+   * */
+  getPrivateKey(index = 0): string {
+    if (!this.phrase) throw new Error('Phrase not set')
+
+    return this.hdNode.derivePath(this.getFullDerivationPath(index)).privateKey
+  }
+
+  /**
    * Get the current address.
    *
    * @param {number} walletIndex (optional) HD wallet index
