@@ -86,6 +86,16 @@ describe('BinanceClient Test', () => {
     bnbClient.purgeClient()
   })
 
+  it('should return private key', async () => {
+    const bnbClientEmptyMain = new BinanceClient({ phrase, network: 'mainnet' as Network })
+    const privateKey0 = bnbClientEmptyMain.getPrivateKey(0)
+    const privateKey1 = bnbClientEmptyMain.getPrivateKey(1)
+
+    console.log(privateKey0, `\n`, privateKey1)
+
+    expect(privateKey0.length).toEqual(privateKey1.length)
+  })
+
   it('should start with empty wallet', async () => {
     const bnbClientEmptyMain = new BinanceClient({ phrase, network: 'mainnet' as Network })
     const addressMain = bnbClientEmptyMain.getAddress()
