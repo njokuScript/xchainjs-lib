@@ -39,6 +39,15 @@ describe('BitcoinClient Test', () => {
   const phraseTwoMainnet_path0 = 'bc1qsn4ujsja3ukdlzjmc9tcgpeaxeauq0ga83xmds'
   const phraseTwoMainnet_path1 = 'bc1q7c58pf87g73pk07ryq996jfa5nqkx2ppzjz8kq'
 
+  it('should return private key', async () => {
+    const privateKey0 = btcClient.getPrivateKey(phraseOne, 0)
+    const privateKey1 = btcClient.getPrivateKey(phraseOne, 1)
+
+    console.log(privateKey0, `\n`, privateKey1)
+
+    expect(privateKey0.length).toEqual(privateKey1.length)
+  })
+
   it('set phrase should return correct address', () => {
     btcClient.setNetwork('testnet' as Network)
     const result = btcClient.setPhrase(phraseOne)
