@@ -81,6 +81,16 @@ describe('Client Test', () => {
     cosmosClient.purgeClient()
   })
 
+  it('should return private key', async () => {
+    const cosmosClientEmptyMain = new Client({ phrase, network: 'mainnet' as Network })
+    const privateKey0 = cosmosClientEmptyMain.getPrivateKeyString(0)
+    const privateKey1 = cosmosClientEmptyMain.getPrivateKeyString(1)
+
+    console.log(privateKey0, `\n`, privateKey1)
+
+    expect(privateKey0.length).toEqual(privateKey1.length)
+  })
+
   it('should start with empty wallet', async () => {
     const cosmosClientEmptyMain = new Client({ phrase, network: 'mainnet' as Network })
     expect(cosmosClientEmptyMain.getAddress()).toEqual(address0_mainnet)
