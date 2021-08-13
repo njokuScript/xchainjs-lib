@@ -179,6 +179,29 @@ class Client extends UTXOClient {
   }
 
   /**
+   * Get private key.
+   *
+   * Private function to get keyPair from the this.phrase
+   *
+   * @param {string} phrase The phrase to be used for generating privkey
+   * @returns {string} The privkey generated from the given phrase
+   *
+   * @throws {"Could not get private key from phrase"} Throws an error if failed creating LTC keys from the given phrase
+   * */
+  getPrivateKey(phrase: string, index = 0): string {
+    const ltcNetwork = Utils.ltcNetwork(this.network)
+
+    const seed = getSeed(phrase)
+    const master = Litecoin.bip32.fromSeed(seed, ltcNetwork).derivePath(this.getFullDerivationPath(index))
+
+    if (!master.privateKey) {
+      throw new Error('Could not get private key from phrase')
+    }
+
+    return master.privateKey.toString('hex')
+  }
+
+  /**
    * Validate the given address.
    *
    * @param {Address} address
