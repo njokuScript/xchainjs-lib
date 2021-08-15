@@ -169,6 +169,30 @@ class Client extends UTXOClient {
   }
 
   /**
+   * Get private key.
+   *
+   * Private function to get keyPair from the this.phrase
+   *
+   * @param {string} phrase The phrase to be used for generating privkey
+   * @param {number} index The derivation path suffix
+   * @returns {string} The privkey generated from the given phrase
+   *
+   * @throws {"Invalid phrase"} Thrown if invalid phrase is provided.
+   * */
+  getPrivateKey(phrase: string, index: number): string {
+    const rootSeed = getSeed(phrase)
+    const keyPair = bitcash.HDNode.fromSeedBuffer(rootSeed, utils.bchNetwork(this.network)).derivePath(
+      this.getFullDerivationPath(index),
+    ).keyPair
+
+    if (!keyPair.d) {
+      throw new Error('Could not get private key from phrase')
+    }
+
+    return keyPair.d.toBuffer().toString('hex')
+  }
+
+  /**
    * Get the current address.
    *
    * Generates a network-specific key-pair by first converting the buffer to a Wallet-Import-Format (WIF)

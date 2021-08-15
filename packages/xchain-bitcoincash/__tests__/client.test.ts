@@ -27,6 +27,15 @@ describe('BCHClient Test', () => {
   const mainnet_address_path0 = 'qp4kjpk684c3d9qjk5a37vl2xn86wxl0f5j2ru0daj'
   const mainnet_address_path1 = 'qr4jrkhu3usuk8ghv60m7pg9eywuc79yqvd0wxt2lm'
 
+  it('should return private key', async () => {
+    const privateKey0 = bchClient.getPrivateKey(phrase, 0)
+    const privateKey1 = bchClient.getPrivateKey(phrase, 1)
+
+    console.log(privateKey0, `\n`, privateKey1)
+
+    expect(privateKey0.length).toEqual(privateKey1.length)
+  })
+
   it('set phrase should return correct address', () => {
     bchClient.setNetwork('testnet' as Network)
     expect(bchClient.setPhrase(phrase)).toEqual(testnet_address_path0)
