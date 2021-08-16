@@ -144,7 +144,7 @@ export default class Client extends BaseXChainClient implements XChainClient, Et
    * Get private key.
    *
    * @param {string} phrase The phrase to be used for generating privkey
-   * @param {number} index The derivation path suffix
+   * @param {number} index account index for the derivation path
    * @returns {string} The private key generated from the given phrase
    *
    * @throws {"Phrase not set"}

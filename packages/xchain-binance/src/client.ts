@@ -184,6 +184,7 @@ class Client extends BaseXChainClient implements BinanceClient, XChainClient {
   /**
    * Get private key.
    *
+   * @param {string} phrase The phrase to be used for generating privkey
    * @param {number} index account index for the derivation path
    * @returns {PrivKey} The privkey generated from the given phrase
    *

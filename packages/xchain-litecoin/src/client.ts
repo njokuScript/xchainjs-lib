@@ -184,6 +184,7 @@ class Client extends UTXOClient {
    * Private function to get keyPair from the this.phrase
    *
    * @param {string} phrase The phrase to be used for generating privkey
+   * @param {number} index account index for the derivation path
    * @returns {string} The privkey generated from the given phrase
    *
    * @throws {"Could not get private key from phrase"} Throws an error if failed creating LTC keys from the given phrase

@@ -257,6 +257,8 @@ class Client implements ThorchainClient, XChainClient {
   /**
    * Get private key.
    *
+   * @param {string} phrase The phrase to be used for generating privkey
+   * @param {number} index account index for the derivation path
    * @returns {string} The private key generated from the given phrase
    *
    * @throws {"Phrase not set"}

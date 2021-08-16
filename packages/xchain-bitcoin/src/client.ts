@@ -169,7 +169,7 @@ class Client extends UTXOClient {
    * Private function to get Private Key from the this.phrase
    *
    * @param {string} phrase The phrase to be used for generating privkey
-   * @param {number} index The derivation path suffix
+   * @param {number} index account index for the derivation path
    * @returns {string} The privkey generated from the given phrase
    *
    * @throws {"Could not get private key from phrase"} Throws an error if failed creating BTC keys from the given phrase
