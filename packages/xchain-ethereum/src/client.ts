@@ -143,15 +143,18 @@ export default class Client extends BaseXChainClient implements XChainClient, Et
   /**
    * Get private key.
    *
+   * @param {string} phrase The phrase to be used for generating privkey
+   * @param {number} index The derivation path suffix
    * @returns {string} The private key generated from the given phrase
    *
    * @throws {"Phrase not set"}
    * Throws an error if phrase has not been set before
    * */
-  getPrivateKey(index = 0): string {
-    if (!this.phrase) throw new Error('Phrase not set')
+  getPrivateHex(phrase: string, index = 0): string {
+    if (!phrase) throw new Error('Phrase not set')
+    const hdNode = HDNode.fromMnemonic(phrase)
 
-    return this.hdNode.derivePath(this.getFullDerivationPath(index)).privateKey
+    return hdNode.derivePath(this.getFullDerivationPath(index)).privateKey
   }
 
   /**

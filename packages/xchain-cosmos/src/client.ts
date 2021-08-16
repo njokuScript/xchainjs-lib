@@ -167,6 +167,8 @@ class Client implements CosmosClient, XChainClient {
    * @private
    * Get private key.
    *
+   * @param {string} phrase The phrase to be used for generating privkey
+   * @param {number} index The derivation path suffix
    * @returns {PrivKey} The private key generated from the given phrase
    *
    * @throws {"Phrase not set"}

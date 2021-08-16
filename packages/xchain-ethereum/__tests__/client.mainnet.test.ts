@@ -34,10 +34,8 @@ describe('Client Test', () => {
       ethplorerUrl,
     })
 
-    const privateKey0 = ethClient.getPrivateKey(0)
-    const privateKey1 = ethClient.getPrivateKey(1)
-
-    console.log(privateKey0, `\n`, privateKey1)
+    const privateKey0 = ethClient.getPrivateHex(phrase, 0)
+    const privateKey1 = ethClient.getPrivateHex(phrase, 1)
 
     expect(privateKey0.length).toEqual(privateKey1.length)
   })
