@@ -174,7 +174,7 @@ class Client extends UTXOClient {
    *
    * @throws {"Could not get private key from phrase"} Throws an error if failed creating BTC keys from the given phrase
    * */
-  getPrivateKey(phrase: string, index = 0): string {
+  getPrivateHex(phrase: string, index = 0): string {
     const btcNetwork = Utils.btcNetwork(this.network)
 
     const seed = getSeed(phrase)

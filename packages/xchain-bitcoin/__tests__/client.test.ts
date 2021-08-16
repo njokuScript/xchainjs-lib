@@ -40,10 +40,8 @@ describe('BitcoinClient Test', () => {
   const phraseTwoMainnet_path1 = 'bc1q7c58pf87g73pk07ryq996jfa5nqkx2ppzjz8kq'
 
   it('should return private key', async () => {
-    const privateKey0 = btcClient.getPrivateKey(phraseOne, 0)
-    const privateKey1 = btcClient.getPrivateKey(phraseOne, 1)
-
-    console.log(privateKey0, `\n`, privateKey1)
+    const privateKey0 = btcClient.getPrivateHex(phraseOne, 0)
+    const privateKey1 = btcClient.getPrivateHex(phraseOne, 1)
 
     expect(privateKey0.length).toEqual(privateKey1.length)
   })
