@@ -35,8 +35,6 @@ describe('LitecoinClient Test', () => {
     const privateKey0 = ltcClient.getPrivateHex(phraseOne, 0)
     const privateKey1 = ltcClient.getPrivateHex(phraseOne, 1)
 
-    console.log(privateKey0, `\n`, privateKey1)
-
     expect(privateKey0.length).toEqual(privateKey1.length)
   })
 

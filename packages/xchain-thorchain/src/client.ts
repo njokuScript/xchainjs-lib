@@ -262,8 +262,8 @@ class Client implements ThorchainClient, XChainClient {
    * @throws {"Phrase not set"}
    * Throws an error if phrase has not been set before
    * */
-  getPrivateKeyString(index = 0): string {
-    const privKey = this.cosmosClient.getPrivKeyFromMnemonic(this.phrase, this.getFullDerivationPath(index))
+  getPrivateHex(phrase: string, index = 0): string {
+    const privKey = this.cosmosClient.getPrivKeyFromMnemonic(phrase, this.getFullDerivationPath(index))
     return privKey.toBuffer().toString('hex')
   }
 

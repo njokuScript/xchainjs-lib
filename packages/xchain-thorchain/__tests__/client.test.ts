@@ -75,10 +75,8 @@ describe('Client Test', () => {
   })
 
   it('should return private key', async () => {
-    const privateKey0 = thorClient.getPrivateKeyString(0)
-    const privateKey1 = thorClient.getPrivateKeyString(1)
-
-    console.log(privateKey0, `\n`, privateKey1)
+    const privateKey0 = thorClient.getPrivateHex(phrase, 0)
+    const privateKey1 = thorClient.getPrivateHex(phrase, 1)
 
     expect(privateKey0.length).toEqual(privateKey1.length)
   })
