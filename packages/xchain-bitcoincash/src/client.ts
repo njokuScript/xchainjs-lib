@@ -179,7 +179,7 @@ class Client extends UTXOClient {
    *
    * @throws {"Invalid phrase"} Thrown if invalid phrase is provided.
    * */
-  getPrivateKey(phrase: string, index: number): string {
+  getPrivateHex(phrase: string, index: number): string {
     const rootSeed = getSeed(phrase)
     const keyPair = bitcash.HDNode.fromSeedBuffer(rootSeed, utils.bchNetwork(this.network)).derivePath(
       this.getFullDerivationPath(index),

@@ -28,10 +28,8 @@ describe('BCHClient Test', () => {
   const mainnet_address_path1 = 'qr4jrkhu3usuk8ghv60m7pg9eywuc79yqvd0wxt2lm'
 
   it('should return private key', async () => {
-    const privateKey0 = bchClient.getPrivateKey(phrase, 0)
-    const privateKey1 = bchClient.getPrivateKey(phrase, 1)
-
-    console.log(privateKey0, `\n`, privateKey1)
+    const privateKey0 = bchClient.getPrivateHex(phrase, 0)
+    const privateKey1 = bchClient.getPrivateHex(phrase, 1)
 
     expect(privateKey0.length).toEqual(privateKey1.length)
   })
