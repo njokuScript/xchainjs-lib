@@ -32,8 +32,8 @@ describe('LitecoinClient Test', () => {
   const addyThree = 'tltc1q04y2lnt0ausy07vq9dg5w2rnn9yjl3rz364adu'
 
   it('should return private key', async () => {
-    const privateKey0 = ltcClient.getPrivateKey(phraseOne, 0)
-    const privateKey1 = ltcClient.getPrivateKey(phraseOne, 1)
+    const privateKey0 = ltcClient.getPrivateHex(phraseOne, 0)
+    const privateKey1 = ltcClient.getPrivateHex(phraseOne, 1)
 
     console.log(privateKey0, `\n`, privateKey1)
 
