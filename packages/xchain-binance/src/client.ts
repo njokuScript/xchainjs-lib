@@ -166,6 +166,7 @@ class Client extends BaseXChainClient implements BinanceClient, XChainClient {
   }
 
   /**
+   * @private
    * Get private key.
    *
    * @param {number} index account index for the derivation path
@@ -174,10 +175,25 @@ class Client extends BaseXChainClient implements BinanceClient, XChainClient {
    * @throws {"Phrase not set"}
    * Throws an error if phrase has not been set before
    * */
-  getPrivateKey(index: number): PrivKey {
+  private getPrivateKey(index: number): PrivKey {
     if (!this.phrase) throw new Error('Phrase not set')
 
     return crypto.getPrivateKeyFromMnemonic(this.phrase, true, index)
+  }
+
+  /**
+   * Get private key.
+   *
+   * @param {number} index account index for the derivation path
+   * @returns {PrivKey} The privkey generated from the given phrase
+   *
+   * @throws {"Phrase not set"}
+   * Throws an error if phrase has not been set before
+   * */
+  getPrivateHex(phrase: string, index: number): PrivKey {
+    if (!phrase) throw new Error('Phrase not set')
+
+    return crypto.getPrivateKeyFromMnemonic(phrase, true, index)
   }
 
   /**

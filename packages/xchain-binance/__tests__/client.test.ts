@@ -88,10 +88,8 @@ describe('BinanceClient Test', () => {
 
   it('should return private key', async () => {
     const bnbClientEmptyMain = new BinanceClient({ phrase, network: 'mainnet' as Network })
-    const privateKey0 = bnbClientEmptyMain.getPrivateKey(0)
-    const privateKey1 = bnbClientEmptyMain.getPrivateKey(1)
-
-    console.log(privateKey0, `\n`, privateKey1)
+    const privateKey0 = bnbClientEmptyMain.getPrivateHex(phrase, 0)
+    const privateKey1 = bnbClientEmptyMain.getPrivateHex(phrase, 1)
 
     expect(privateKey0.length).toEqual(privateKey1.length)
   })
