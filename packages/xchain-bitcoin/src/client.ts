@@ -17,6 +17,7 @@ import {
 import { getSeed } from '@xchainjs/xchain-crypto'
 import { AssetBTC, Chain, assetAmount, assetToBase } from '@xchainjs/xchain-util'
 import * as Bitcoin from 'bitcoinjs-lib'
+import wif from 'wif'
 
 import { BTC_DECIMAL } from './const'
 import * as sochain from './sochain-api'
@@ -183,7 +184,7 @@ class Client extends UTXOClient {
       throw new Error('Could not get private key from phrase')
     }
 
-    return master.privateKey.toString('hex')
+    return wif.encode(this.network === Network.Mainnet ? 128 : 239, master.privateKey, true)
   }
 
   /**
