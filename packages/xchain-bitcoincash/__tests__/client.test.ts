@@ -31,7 +31,8 @@ describe('BCHClient Test', () => {
     const privateKey0 = bchClient.getPrivateHex(phrase, 0)
     const privateKey1 = bchClient.getPrivateHex(phrase, 1)
 
-    expect(privateKey0.length).toEqual(privateKey1.length)
+    expect(privateKey0).toEqual('L1vm2jZeCBZkpjHNReXEw86MJLoVkxpiiBP2B8UaKFuqpxqA8L8s')
+    expect(privateKey1).toEqual('L13P6Z7SGgsTBjiAvfz5THqyNosRNbPuWJEeqrMuTtHbjS7855Kc')
   })
 
   it('set phrase should return correct address', () => {
