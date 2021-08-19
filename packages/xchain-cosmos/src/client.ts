@@ -193,10 +193,7 @@ class Client implements CosmosClient, XChainClient {
   getPrivateHex(phrase: string, index = 0): string {
     if (!phrase) throw new Error('Phrase not set')
 
-    return this.getSDKClient()
-      .getPrivKeyFromMnemonic(phrase, this.getFullDerivationPath(index))
-      .toBuffer()
-      .toString('hex')
+    return this.getSDKClient().getPrivKeyFromMnemonic(phrase, this.getFullDerivationPath(index)).toBase64()
   }
 
   getSDKClient(): CosmosSDKClient {
